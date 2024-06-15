@@ -32,6 +32,7 @@ async function deleteShoeById( req,res) {
 
 async function filterShoesByCategory( req,res) {
     const category = req.query.category;
+    
     try {
         const filteredShoes = await Shoes.find({category:category});
 
