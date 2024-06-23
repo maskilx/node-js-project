@@ -35,7 +35,7 @@ async function filterShoesByCategory( req,res) {
     
     try {
         const filteredShoes = await Shoes.find({category:category});
-
+    
         res.status(200).json({message:`shoes with category ${category} recieved successfully`, filteredShoes:filteredShoes});
     } catch (error) {
         res.status(400).json({message: error.message});

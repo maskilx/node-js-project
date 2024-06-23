@@ -6,7 +6,7 @@ const shoescontroller = require('../cotrollers/shoes.js');
 router.get("/",shoescontroller.getAllshoes);
 router.post("/",shoescontroller.createNewShoe);
 router.delete("/:id",shoescontroller.deleteShoeById);
-router.get("/",shoescontroller.filterShoesByCategory);
+router.get("/filter",shoescontroller.filterShoesByCategory);
 
 
 module.exports = router
