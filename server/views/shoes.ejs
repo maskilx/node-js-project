@@ -25,7 +25,7 @@
             <h2>Featured Products</h2>
             <% for (let i = 0; i < shoes.length; i++) { %>
             <div class="product">
-                <img src="<%= shoes[i].image %>" alt="Product 1">
+                <img src="<%= shoes[i].image %>" alt="<%= shoe.title %>">
                 <h3><%= shoes[i].title %></h3>
                 <p>$<%= shoes[i].price %></p>
                 <a href="/shoe?id=<%= shoes[i].id %>">View Details</a>

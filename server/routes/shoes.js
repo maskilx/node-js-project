@@ -8,5 +8,4 @@ router.post("/",shoescontroller.createNewShoe);
 router.delete("/:id",shoescontroller.deleteShoeById);
 router.get("/filter",shoescontroller.filterShoesByCategory);
 
-
 module.exports = router
