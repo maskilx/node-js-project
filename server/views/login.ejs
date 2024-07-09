@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>dont have an account?<a href="/register">Sign Up</a></p>
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/login", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle successful login response
+                    console.log(xhr.responseText);
+                } else {
+                    // Handle error or unsuccessful login response
+                    console.error(xhr.responseText);
+                }
+            };
+            xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+        }
+    </script>
+</body>
+</html>

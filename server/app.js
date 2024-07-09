@@ -6,7 +6,7 @@ const server = express();
 const cors = require('cors')
 server.use(express.static("public"));
 require('dotenv').config()
-
+server.set("view engine", "ejs");
 server.use(cors());
 server.use(express.json());
 server.use("/shoes",shoes);

@@ -2,7 +2,8 @@ const Shoes = require("../models/shoes.js")
 async function getAllshoes(req, res) {
     try {
         const shoes = await Shoes.find();
-        res.status(200).json({message:"shoes fetched successfully", shoes:shoes});
+        res.render("../views/shoes", {shoes:shoes});
+        //res.status(200).json({message:"shoes fetched successfully", shoes:shoes});
     } catch (error) {
         res.status(400).json({message: error.message});
     }
