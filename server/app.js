@@ -11,7 +11,7 @@ server.use(cors());
 server.use(express.json());
 server.use("/shoes",shoes);
 server.use("/users",users);
-
+//cd "C:\Users\adima\Downloads\Final project store\server"
 server.listen(process.env.PORT, () => console.log(`Server is running on port on http://localhost:${process.env.PORT}`));
 
 connectDB();
