@@ -21,6 +21,7 @@
             </ul>
             <div class="search-cart">
                 <input type="text" placeholder="Search...">
+                <a href="/signin" class="sign-in">Sign In</a> <!-- Moved Sign In option -->
                 <a href="/cart" class="cart-icon">🛒</a>
             </div>
         </nav>
@@ -42,10 +43,12 @@
             <div class="products">
                 <% for (let i = 0; i < shoes.length; i++) { %>
                 <div class="product">
-                    <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>">
-                    <h3><%= shoes[i].title %></h3>
-                    <p>$<%= shoes[i].price %></p>
-                    <a href="/shoe?id=<%= shoes[i].id %>" class="view-details">View Details</a>
+                    <a href="/shoes/<%= shoes[i].id %>">
+                        <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>">
+                    </a>
+                    <h3 class="title"><%= shoes[i].title %></h3>
+                    <p class="category"><%= shoes[i].category %></p>
+                    <p class="price"> $<%= shoes[i].price %></p>
                 </div>
                 <% } %>
             </div>
