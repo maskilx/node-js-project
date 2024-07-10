@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dummy Shoe Store</title>
+    <title>Shoe Store</title>
     <link rel="stylesheet" href="shoes.css">
 </head>
 <body>
     <header>
-        <h1>Dummy Shoe Store</h1>
         <nav>
+            <div class="logo">
+                <img src="..\video\swoosh-logo-black.png" alt="Logo">
+            </div>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/men">Men</a></li>
@@ -17,27 +19,62 @@
                 <li><a href="/kids">Kids</a></li>
                 <li><a href="/sale">Sale</a></li>
             </ul>
+            <div class="search-cart">
+                <input type="text" placeholder="Search...">
+                <a href="/cart" class="cart-icon">🛒</a>
+            </div>
         </nav>
     </header>
-
     <main>
-        <section class="products">
-            <h2>Featured Products</h2>
-            <% for (let i = 0; i < shoes.length; i++) { %>
-            <div class="product">
-                <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>">
-                <h3><%= shoes[i].title %></h3>
-                <p>$<%= shoes[i].price %></p>
-                <a href="/shoe?id=<%= shoes[i].id %>">View Details</a>
-                <button>Add to Cart</button>
+        <section class="hero">
+            <video autoplay muted loop id="myVideo">
+                <source src="../video/Nike Just Do It Nike IL (1).mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            <div class="hero-content">
+                <h1>Our New Shoes</h1>
+                <p>Discover the New Collection</p>
+                <a href="/new-collection" class="cta-button">Shop Now</a>
             </div>
-            <% } %>
-            
+        </section>
+        <section class="featured-products">
+            <h2>Featured Products</h2>
+            <div class="products">
+                <% for (let i = 0; i < shoes.length; i++) { %>
+                <div class="product">
+                    <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>">
+                    <h3><%= shoes[i].title %></h3>
+                    <p>$<%= shoes[i].price %></p>
+                    <a href="/shoe?id=<%= shoes[i].id %>" class="view-details">View Details</a>
+                </div>
+                <% } %>
+            </div>
         </section>
     </main>
-
     <footer>
-        <p>&copy; 2024 Dummy Shoe Store. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Shipping and Delivery</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
