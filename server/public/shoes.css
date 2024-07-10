@@ -136,7 +136,7 @@ nav ul li a:hover,
 
 .hero-content {
     position: absolute;
-    top: 50%;
+    top: 60%; /* Adjust this value to move the content down */
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -144,6 +144,7 @@ nav ul li a:hover,
     z-index: 1;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 
 .hero-content h1 {
     font-size: 3em;
