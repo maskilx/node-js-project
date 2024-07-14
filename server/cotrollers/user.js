@@ -32,22 +32,21 @@ async function createNewUser( req,res) {
     }
 }
 
-async function loginUser( req,res) {
-    const {email,password} = req.body;
+async function loginUser(req, res) {
+    const {email, password} = req.body;
 
     try {
-        if(!email || !password) return res.status(400).json({message: "please provide all fields"});
-        if(!validator.isEmail(email)) return res.status(400).json({message: "invalid email"});
-
+        if(!email || !password) return res.status(400).json({message: "Please provide email and password"});
+        
         const user = await User.findOne({email});
-        if(!user) return res.status(404).json({message: "user not found"});
+        if(!user) return res.status(404).json({message: "User not found"});
 
         const match = await bcrypt.compare(password, user.password);
-        if(!match) return res.status(400).json({message: "invalid credentials"});
+        if(!match) return res.status(400).json({message: "Invalid credentials"});
 
-        const token = jwt.sign({_id:user._id, isAdmin:user.isAdmin}, process.env.JWT_SECRET, {expiresIn:'30d'});
+        const token = jwt.sign({_id: user._id, isAdmin: user.isAdmin}, process.env.JWT_SECRET, {expiresIn: '30d'});
 
-        res.status(200).json({message:"user logged in successfully", token});
+        res.status(200).json({message: "User logged in successfully", token});
     } catch (error) {
         res.status(400).json({message: error.message});
     }

@@ -23,7 +23,7 @@
                 </ul>
                 <div class="search-cart">
                     <input type="text" placeholder="Search...">
-                    <a href="/signin" class="sign-in">Sign In</a> <!-- Moved Sign In option -->
+                    <a href="#" class="sign-in">Sign In</a>
                     <a href="/cart" class="cart-icon">🛒</a>
                 </div>
             </nav>
@@ -55,6 +55,15 @@
             </div>
         </section>
     </main>
+    <div id="loginContainer" style="display: none;">
+        <h2 id="loginHeading">sign in</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/register" id="signupLink">Sign Up</a></p>
+    </div>
     <div id="shoeDetailsContainer" style="display: none;"></div>
     <footer id="mainFooter">
         <div class="footer-content">
@@ -105,5 +114,38 @@
         }
     });
     </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.sign-in').click(function(e) {
+        e.preventDefault();
+        $('main').hide();
+        $('#loginContainer').show();
+    });
+
+    $('#loginForm').submit(function(e) {
+        e.preventDefault();
+        var email = $('#email').val();
+        var password = $('#password').val();
+
+        $.ajax({
+            url: "/user/login",
+            method: "POST",
+            data: {email: email, password: password},
+            success: function(response) {
+                console.log("Login successful:", response);
+                alert("Login successful!");
+                window.location.href = "/"; // Redirect to home page
+            },
+            error: function(xhr, status, error) {
+                console.error("Login error:", error);
+                alert("Login failed. Please try again.");
+            }
+        });
+    });
+});
+</script>
+
 </body>
 </html>
