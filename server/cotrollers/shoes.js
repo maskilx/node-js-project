@@ -9,6 +9,18 @@ async function getAllshoes(req, res) {
     }
 }
 
+async function getShoeById(req, res) {
+    try {
+        const shoe = await Shoes.findById(req.params.id);
+        if (!shoe) {
+            return res.status(404).send("Shoe not found");
+        }
+        res.render("shoe-details", { shoe: shoe, layout: false });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
 async function createNewShoe( req,res) {
     const newShoe = {...req.body};
     const shoeEntity = new Shoes(newShoe);
@@ -47,5 +59,6 @@ module.exports = {
     getAllshoes, 
     createNewShoe,
     deleteShoeById,
-    filterShoesByCategory
+    filterShoesByCategory,
+    getShoeById
 }

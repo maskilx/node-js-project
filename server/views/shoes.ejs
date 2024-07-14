@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shoe Store</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="shoes.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="..\video\swoosh-logo-black.png" alt="Logo">
-            </div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/men">Men</a></li>
-                <li><a href="/women">Women</a></li>
-                <li><a href="/kids">Kids</a></li>
-                <li><a href="/sale">Sale</a></li>
-            </ul>
-            <div class="search-cart">
-                <input type="text" placeholder="Search...">
-                <a href="/signin" class="sign-in">Sign In</a> <!-- Moved Sign In option -->
-                <a href="/cart" class="cart-icon">🛒</a>
-            </div>
-        </nav>
-    </header>
+    <div id="page-container">
+        <header id="mainHeader">
+            <nav>
+                <div class="logo">
+                    <img src="..\video\swoosh-logo-black.png" alt="Logo">
+                </div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/men">Men</a></li>
+                    <li><a href="/women">Women</a></li>
+                    <li><a href="/kids">Kids</a></li>
+                    <li><a href="/sale">Sale</a></li>
+                </ul>
+                <div class="search-cart">
+                    <input type="text" placeholder="Search...">
+                    <a href="/signin" class="sign-in">Sign In</a> <!-- Moved Sign In option -->
+                    <a href="/cart" class="cart-icon">🛒</a>
+                </div>
+            </nav>
+        </header>
     <main>
         <section class="hero">
             <video autoplay muted loop id="myVideo">
@@ -43,9 +45,7 @@
             <div class="products">
                 <% for (let i = 0; i < shoes.length; i++) { %>
                 <div class="product">
-                    <a href="/shoes/<%= shoes[i].id %>">
-                        <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>">
-                    </a>
+                    <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>" onclick="viewShoeDetails('<%= shoes[i]._id %>')">
                     <h3 class="title"><%= shoes[i].title %></h3>
                     <p class="category"><%= shoes[i].category %></p>
                     <p class="price"> $<%= shoes[i].price %></p>
@@ -55,7 +55,8 @@
             </div>
         </section>
     </main>
-    <footer>
+    <div id="shoeDetailsContainer" style="display: none;"></div>
+    <footer id="mainFooter">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Help</h4>
@@ -80,5 +81,29 @@
             <p>&copy; 2024 Shoe Store. All rights reserved.</p>
         </div>
     </footer>
+</div>
+    <script>
+   function viewShoeDetails(shoeId) {
+    $.ajax({
+        url: `/shoes/${shoeId}`,
+        method: 'GET',
+        success: function(response) {
+            $('main').html(response);
+            history.pushState({shoeId: shoeId}, '', `/shoes/${shoeId}`);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching shoe details:', error);
+        }
+    });
+}
+
+    $(window).on('popstate', function(event) {
+        if(event.originalEvent.state && event.originalEvent.state.shoeId) {
+            viewShoeDetails(event.originalEvent.state.shoeId);
+        } else {
+            window.location.reload();
+        }
+    });
+    </script>
 </body>
 </html>
