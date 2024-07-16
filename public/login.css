@@ -1,0 +1,116 @@
+/* Styles for the login container */
+#loginContainer {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+}
+
+/* Login container heading styles */
+#loginContainer h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+}
+
+/* Login form styles */
+#loginForm {
+    padding: 0 15px;
+}
+
+/* Login form input styles */
+#loginForm input {
+    width: calc(100% - 30px);
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: none;
+}
+
+/* Focus and hover effect for input fields */
+#loginForm input:focus, #loginForm input:hover {
+    border-color: #4a90e2;
+    box-shadow: none;
+    outline: none;
+    transform: none;
+}
+
+/* Submit button styles */
+#loginForm button {
+    width: calc(100% - 30px);
+    padding: 15px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: none;
+}
+
+/* Hover and active effect for submit button */
+#loginForm button:hover {
+    background-color: #4a90e2;
+    box-shadow: none;
+    transform: none;
+}
+
+#loginForm button:active {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Login container paragraph styles */
+#loginContainer p {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    transition: none;
+}
+
+/* Login container link styles */
+#loginContainer a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: none;
+    position: relative;
+}
+
+/* Link hover effect */
+#loginContainer a:hover {
+    color: #3a7bc8;
+}
+
+/* Link underline effect */
+#loginContainer a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #3a7bc8;
+    visibility: hidden;
+    transform: none;
+    transition: none;
+}
+
+#loginContainer a:hover::after {
+    visibility: visible;
+    transform: none;
+}

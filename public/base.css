@@ -1,0 +1,38 @@
+/* Basic styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #111;
+}
+
+/* Title, category, and price styles */
+.title,
+.category,
+.price {
+    margin-bottom: 1%;
+}
+
+.category {
+    font-size: 1em;
+    color: #6b6969;
+    margin-top: 0;
+}
+
+/* Page container to ensure footer stays at the bottom */
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#mainFooter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Add some padding to the bottom of the main content to prevent overlap with footer */
+main {
+    padding-bottom: 300px; /* Adjust this value based on your footer height */
+}

@@ -1,0 +1,41 @@
+/* Footer styles */
+footer {
+    background-color: #111;
+    color: #fff;
+    padding: 40px;
+}
+
+/* Footer content styles */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Footer section heading styles */
+.footer-section h4 {
+    margin-bottom: 15px;
+}
+
+/* Footer section list styles */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Footer section link styles */
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Footer copyright styles */
+footer .copyright {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+}

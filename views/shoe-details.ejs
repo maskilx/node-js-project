@@ -1,25 +1,8 @@
 <div id="shoeDetails">
     <div class="shoe-container">
-        <div class="shoe-images">
-            <img src="<%= shoe.image %>" alt="<%= shoe.title %>">
-        </div>
-        <div class="shoe-info">
-            <h1><%= shoe.title %></h1>
-            <p class="category"><%= shoe.category %></p>
-            <p class="price">$<%= shoe.price %></p>
-            <p class="description"><%= shoe.description %></p>
-            
-            <div class="size-selector">
-                <label for="shoe-size">Select Size:</label>
-                <select id="shoe-size" name="shoe-size">
-                    <option value="">Select a size</option>
-                    <% [36, 37, 38, 39, 40, 41, 42, 43, 44, 45].forEach(size => { %>
-                        <option value="<%= size %>"><%= size %></option>
-                    <% }); %>
-                </select>
-            </div>
-            
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
+        <!-- Include shoe images partial -->
+        <%- include('partials/shoe-images') %>
+        <!-- Include shoe information partial -->
+        <%- include('partials/shoe-info', { shoe: shoe }) %>
     </div>
 </div>

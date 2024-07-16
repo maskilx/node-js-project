@@ -1,0 +1,53 @@
+/* Featured products styles */
+.featured-products {
+    padding: 40px;
+}
+
+/* Featured products heading styles */
+.featured-products h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Product grid styles */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Individual product styles */
+.product {
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.product img:hover {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+/* View details button styles */
+.view-details {
+    display: inline-block;
+    background-color: #111;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.view-details:hover {
+    background-color: #333;
+}
