@@ -5,6 +5,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const connectDB = require("./config/db");
+const session = require('express-session'); // הוספת express-session
+const cartRouter = require('./routes/cart'); // הוספת מסלול עגלת הקניות
 
 // Load environment variables from .env file
 dotenv.config();
@@ -18,6 +20,14 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.join(__dirname, 'public')));
 
+// Session middleware
+server.use(session({
+    secret: 'yourSecretKey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
 // Set the view engine to EJS
 server.set('view engine', 'ejs');
 server.set('views', path.join(__dirname, 'views'));
@@ -25,6 +35,7 @@ server.set('views', path.join(__dirname, 'views'));
 // Routes
 server.use("/shoes", shoes);
 server.use("/users", users);
+server.use("/cart", cartRouter); // הוספת מסלול עגלת הקניות
 
 // Database connection
 const PORT = process.env.PORT || 8080;
