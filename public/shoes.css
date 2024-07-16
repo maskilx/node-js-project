@@ -382,7 +382,7 @@ main {
   }
 
   /* log in */
-  #loginContainer {
+  #loginContainer, #registerContainer {
     max-width: 400px;
     margin: 80px auto;
     padding: 30px;
@@ -393,23 +393,23 @@ main {
     transition: all 0.3s ease;
 }
 
-#loginContainer:hover {
+#loginContainer:hover, #registerContainer:hover {
     transform: scale(1.02);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-#loginContainer h2 {
+#loginContainer h2, #registerContainer h2 {
     text-align: center;
     margin-bottom: 25px;
     color: #333;
     font-size: 24px;
 }
 
-#loginForm {
+#loginForm, #registerForm {
     padding: 0 15px;
 }
 
-#loginForm input {
+#loginForm input, #registerForm input {
     width: calc(100% - 30px);
     padding: 15px;
     margin-bottom: 20px;
@@ -419,14 +419,14 @@ main {
     transition: all 0.3s ease;
 }
 
-#loginForm input:focus, #loginForm input:hover {
+#loginForm input:focus, #loginForm input:hover, #registerForm input:focus, #registerForm input:hover {
     border-color: #4a90e2;
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
     outline: none;
     transform: translateY(-2px);
 }
 
-#loginForm button {
+#loginForm button, #registerForm button {
     width: calc(100% - 30px);
     padding: 15px;
     background-color: #4a90e2;
@@ -439,18 +439,18 @@ main {
     transition: all 0.3s ease;
 }
 
-#loginForm button:hover {
+#loginForm button:hover, #registerForm button:hover {
     background-color: #3a7bc8;
     box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
     transform: translateY(-2px);
 }
 
-#loginForm button:active {
+#loginForm button:active, #registerForm button:active {
     transform: scale(0.98);
     box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
 }
 
-#loginContainer p {
+#loginContainer p, #registerContainer p {
     margin-top: 20px;
     text-align: center;
     color: #666;
@@ -458,11 +458,11 @@ main {
     transition: all 0.3s ease;
 }
 
-#loginContainer p:hover {
+#loginContainer p:hover, #registerContainer p:hover {
     transform: translateY(-2px);
 }
 
-#loginContainer a {
+#loginContainer a, #registerContainer a {
     color: #4a90e2;
     text-decoration: none;
     font-weight: 600;
@@ -470,11 +470,11 @@ main {
     position: relative;
 }
 
-#loginContainer a:hover {
+#loginContainer a:hover, #registerContainer a:hover {
     color: #3a7bc8;
 }
 
-#loginContainer a::after {
+#loginContainer a::after, #registerContainer a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -487,8 +487,9 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
-#loginContainer a:hover::after {
+#loginContainer a:hover::after, #registerContainer a:hover::after {
     visibility: visible;
     transform: scaleX(1);
 }
+
 

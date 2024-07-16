@@ -24,100 +24,99 @@
                 <div class="search-cart">
                     <input type="text" placeholder="Search...">
                     <a href="#" class="sign-in">Sign In</a>
+                    <a href="#" id="logoutLink" style="display: none;">Logout</a>
                     <a href="/cart" class="cart-icon">🛒</a>
                 </div>
             </nav>
         </header>
-    <main>
-        <section class="hero">
-            <video autoplay muted loop id="myVideo">
-                <source src="../video/Nike Just Do It Nike IL (1).mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <div class="hero-content">
-                <h1>Our New Shoes</h1>
-                <p>Discover the New Collection</p>
-                <a href="/new-collection" class="cta-button">Shop Now</a>
-            </div>
-        </section>
-        <section class="featured-products">
-            <h2>Featured Products</h2>
-            <div class="products">
-                <% for (let i = 0; i < shoes.length; i++) { %>
-                <div class="product">
-                    <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>" onclick="viewShoeDetails('<%= shoes[i]._id %>')">
-                    <h3 class="title"><%= shoes[i].title %></h3>
-                    <p class="category"><%= shoes[i].category %></p>
-                    <p class="price"> $<%= shoes[i].price %></p>
-
+        <main>
+            <section class="hero">
+                <video autoplay muted loop id="myVideo">
+                    <source src="../video/Nike Just Do It Nike IL (1).mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+                <div class="hero-content">
+                    <h1>Our New Shoes</h1>
+                    <p>Discover the New Collection</p>
+                    <a href="/new-collection" class="cta-button">Shop Now</a>
                 </div>
-                <% } %>
+            </section>
+            <section class="featured-products">
+                <h2>Featured Products</h2>
+                <div class="products">
+                    <% for (let i = 0; i < shoes.length; i++) { %>
+                    <div class="product">
+                        <img src="<%= shoes[i].image %>" alt="<%= shoes[i].title %>" onclick="viewShoeDetails('<%= shoes[i]._id %>')">
+                        <h3 class="title"><%= shoes[i].title %></h3>
+                        <p class="category"><%= shoes[i].category %></p>
+                        <p class="price">$<%= shoes[i].price %></p>
+                    </div>
+                    <% } %>
+                </div>
+            </section>
+        </main>
+        <div id="registrationFormContainer" style="display: none;"></div>
+        <div id="loginContainer" style="display: none;">
+            <h2 id="loginHeading">Sign In</h2>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
+        </div>
+        <div id="shoeDetailsContainer" style="display: none;"></div>
+        <footer id="mainFooter">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Order Status</a></li>
+                        <li><a href="#">Shipping and Delivery</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
             </div>
-        </section>
-    </main>
-    <div id="loginContainer" style="display: none;">
-        <h2 id="loginHeading">sign in</h2>
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="/register" id="signupLink">Sign Up</a></p>
+            <div class="copyright">
+                <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-    <div id="shoeDetailsContainer" style="display: none;"></div>
-    <footer id="mainFooter">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Help</h4>
-                <ul>
-                    <li><a href="#">Order Status</a></li>
-                    <li><a href="#">Shipping and Delivery</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>About</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Investors</a></li>
-                    <li><a href="#">Sustainability</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 Shoe Store. All rights reserved.</p>
-        </div>
-    </footer>
-</div>
-    <script>
-   function viewShoeDetails(shoeId) {
-    $.ajax({
-        url: `/shoes/${shoeId}`,
-        method: 'GET',
-        success: function(response) {
-            $('main').html(response);
-            history.pushState({shoeId: shoeId}, '', `/shoes/${shoeId}`);
-        },
-        error: function(xhr, status, error) {
-            console.error('Error fetching shoe details:', error);
-        }
-    });
-}
 
-    $(window).on('popstate', function(event) {
-        if(event.originalEvent.state && event.originalEvent.state.shoeId) {
-            viewShoeDetails(event.originalEvent.state.shoeId);
-        } else {
-            window.location.reload();
+    <script>
+        function viewShoeDetails(shoeId) {
+            $.ajax({
+                url: `/shoes/${shoeId}`,
+                method: 'GET',
+                success: function(response) {
+                    $('main').html(response);
+                    history.pushState({shoeId: shoeId}, '', `/shoes/${shoeId}`);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching shoe details:', error);
+                }
+            });
         }
-    });
-    </script>
     
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
+        $(window).on('popstate', function(event) {
+            if (event.originalEvent.state && event.originalEvent.state.shoeId) {
+                viewShoeDetails(event.originalEvent.state.shoeId);
+            } else {
+                window.location.reload();
+            }
+        });
+    
+        $(document).ready(function() {
     $('.sign-in').click(function(e) {
         e.preventDefault();
         $('main').hide();
@@ -125,27 +124,152 @@ $(document).ready(function() {
     });
 
     $('#loginForm').submit(function(e) {
+        console.log("Form submitted");
         e.preventDefault();
-        var email = $('#email').val();
-        var password = $('#password').val();
+        var email = $('#email').val().trim();
+        var password = $('#password').val().trim();
+
+        console.log("Email value:", email);
+        console.log("Password value:", password);
+
+        if (!email || !password) {
+            alert("Please enter both email and password");
+            return;
+        }
 
         $.ajax({
-            url: "/user/login",
+            url: "/users/login",
             method: "POST",
-            data: {email: email, password: password},
+            data: JSON.stringify({ email: email, password: password }),
+            contentType: "application/json",
+            dataType: "json",
             success: function(response) {
-                console.log("Login successful:", response);
-                alert("Login successful!");
-                window.location.href = "/"; // Redirect to home page
+                console.log("Login response:", response);
+                if (response.success) {
+                    localStorage.setItem('token', response.token);
+                    alert("Login successful!");
+                    $('#loginContainer').hide();
+                    $('main').show();
+                    updateUIAfterLogin();
+                } else {
+                    alert(response.message || "Login failed. Please try again.");
+                }
             },
             error: function(xhr, status, error) {
-                console.error("Login error:", error);
-                alert("Login failed. Please try again.");
+                console.error("Login error:", xhr.responseText);
+                alert("Login failed. Error: " + xhr.responseText);
             }
         });
     });
-});
-</script>
 
+    $('#signupLink').click(function(e) {
+        e.preventDefault();
+        $('#loginContainer').hide();
+        $.ajax({
+            url: "/users/register",
+            method: "GET",
+            success: function(response) {
+                $('#registrationFormContainer').html(response).show();
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching registration form:", error);
+                alert("Failed to load registration form. Please try again.");
+            }
+        });
+    });
+
+    if (localStorage.getItem('token')) {
+        updateUIAfterLogin();
+    }
+});
+
+function updateUIAfterLogin() {
+    $('.sign-in').text('My Account').attr('href', '/account');
+}
+
+
+            $(document).on('click', '#loginLink', function(e) {
+                e.preventDefault();
+                $('#registerContainer').hide();
+                $('#loginContainer').show();
+            });
+    
+            $('nav a').click(function(e) {
+                if ($(this).attr('href') !== '#') {
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    $.ajax({
+                        url: url,
+                        method: 'GET',
+                        success: function(response) {
+                            $('main').html(response);
+                            history.pushState(null, '', url);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Navigation error:', error);
+                        }
+                    });
+                }
+            });
+    
+            if (localStorage.getItem('token')) {
+                updateUIAfterLogin();
+            }
+        
+    
+        function updateUIAfterLogin() {
+            $('.sign-in').text('My Account').attr('href', '/account');
+        }
+    
+        $(document).on('click', '#logoutLink', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            updateUIAfterLogout();
+            alert("You have been logged out.");
+        });
+    
+        function updateUIAfterLogout() {
+            $('.sign-in').text('Sign In').attr('href', '#');
+        }
+
+
+
+
+        $(document).on('submit', '#registerForm', function(e) {
+    e.preventDefault();
+    var formData = {
+        firstName: $('#firstName').val().trim(),
+        lastName: $('#lastName').val().trim(),
+        email: $('#email').val().trim(),
+        password: $('#password').val().trim(),
+        isAdmin: false // ניתן לשנות לפי הצורך
+    };
+
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+        alert("Please provide all fields");
+        return;
+    }
+
+    $.ajax({
+        url: "/users/register",
+        method: "POST",
+        data: JSON.stringify(formData),
+        contentType: "application/json",
+        dataType: "json",
+        success: function(response) {
+            console.log("Registration successful:", response);
+            alert("Registration successful! Please log in.");
+            $('#registrationFormContainer').hide();
+            $('#loginContainer').show();
+        },
+        error: function(xhr, status, error) {
+            console.error("Registration error:", error);
+            alert("Registration failed. Please try again.");
+        }
+    });
+});
+
+
+    </script>
 </body>
 </html>

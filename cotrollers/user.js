@@ -3,6 +3,14 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const User = require("../models/user.js");
 
+async function getLogin(req, res) {
+    res.render("../views/login", { layout: false });
+}
+
+async function getRegister(req, res) {
+    res.render("../views/register", { layout: false });
+}
+
 async function getAllUsers(req, res) {
     try {
         const users = await User.find();
@@ -33,22 +41,35 @@ async function createNewUser( req,res) {
 }
 
 async function loginUser(req, res) {
-    const {email, password} = req.body;
+    console.log("Received request body:", req.body);
+    const { email, password } = req.body;
+    
+    console.log("Login attempt for:", email);
+
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: "Please provide email and password" });
+    }
 
     try {
-        if(!email || !password) return res.status(400).json({message: "Please provide email and password"});
-        
-        const user = await User.findOne({email});
-        if(!user) return res.status(404).json({message: "User not found"});
+        const user = await User.findOne({ email });
+        if (!user) {
+            console.log("User not found:", email);
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
 
         const match = await bcrypt.compare(password, user.password);
-        if(!match) return res.status(400).json({message: "Invalid credentials"});
+        if (!match) {
+            console.log("Invalid password for:", email);
+            return res.status(400).json({ success: false, message: "Invalid credentials" });
+        }
 
-        const token = jwt.sign({_id: user._id, isAdmin: user.isAdmin}, process.env.JWT_SECRET, {expiresIn: '30d'});
+        const token = jwt.sign({ _id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: '30d' });
 
-        res.status(200).json({message: "User logged in successfully", token});
+        console.log("Login successful for:", email);
+        res.status(200).json({ success: true, message: "User logged in successfully", token });
     } catch (error) {
-        res.status(400).json({message: error.message});
+        console.error("Login error:", error);
+        res.status(500).json({ success: false, message: "Internal server error" });
     }
 }
 
@@ -89,5 +110,7 @@ module.exports = {
     loginUser,
     deleteUserById,
     getUserById,
-    updateUserById
+    updateUserById,
+    getRegister,
+    getLogin
 }
