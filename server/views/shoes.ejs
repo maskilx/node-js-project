@@ -125,25 +125,25 @@ $(document).ready(function() {
     });
 
     $('#loginForm').submit(function(e) {
-        e.preventDefault();
-        var email = $('#email').val();
-        var password = $('#password').val();
+    e.preventDefault();
+    var email = $('#email').val();
+    var password = $('#password').val();
 
-        $.ajax({
-            url: "/user/login",
-            method: "POST",
-            data: {email: email, password: password},
-            success: function(response) {
-                console.log("Login successful:", response);
-                alert("Login successful!");
-                window.location.href = "/"; // Redirect to home page
-            },
-            error: function(xhr, status, error) {
-                console.error("Login error:", error);
-                alert("Login failed. Please try again.");
-            }
-        });
+    $.ajax({
+        url: "/users/login",
+        method: "POST",
+        data: {email: email, password: password},
+        success: function(response) {
+            console.log("Login successful:", response);
+            alert(response.message);
+            window.location.href = "/"; // Redirect to home page
+        },
+        error: function(xhr, status, error) {
+            console.error("Login error:", xhr.responseJSON);
+            alert(xhr.responseJSON.message || "Login failed. Please try again.");
+        }
     });
+});
 });
 </script>
 

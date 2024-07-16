@@ -9,6 +9,8 @@ require('dotenv').config()
 server.set("view engine", "ejs");
 server.use(cors());
 server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
 server.use("/shoes",shoes);
 server.use("/users",users);
 server.use('user', users);
