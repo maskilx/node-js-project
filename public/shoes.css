@@ -381,99 +381,122 @@ main {
     }
   }
 
-  /* log in */
-  #loginContainer {
+/* Styles for the login container */
+#loginContainer {
     max-width: 400px;
-    margin: 80px auto;
-    padding: 30px;
+    margin: 80px auto; /* Center the container and add top margin */
+    padding: 30px; /* Add padding inside the container */
     border: none;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    transition: all 0.3s ease;
+    border-radius: 12px; /* Round the corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+    background-color: #ffffff; /* Set the background color */
+    position: fixed; /* Fix the container on the screen */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust positioning to truly center */
+    z-index: 1000; /* Ensure it is above other elements */
+    display: none; /* Hidden by default */
 }
 
+/* Remove hover and transition effects for the login container */
 #loginContainer:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* Remove transition for the login container */
+#loginContainer {
+    transition: none;
+}
+
+/* Styles for the login heading */
 #loginContainer h2 {
     text-align: center;
     margin-bottom: 25px;
-    color: #333;
-    font-size: 24px;
+    color: #333; /* Dark gray color */
+    font-size: 24px; /* Larger font size */
 }
 
+/* Padding inside the form */
 #loginForm {
     padding: 0 15px;
 }
 
+/* Styles for input fields */
 #loginForm input {
-    width: calc(100% - 30px);
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    width: calc(100% - 30px); /* Full width minus padding */
+    padding: 15px; /* Add padding inside the input fields */
+    margin-bottom: 20px; /* Space between inputs */
+    border: 2px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Round the corners */
+    font-size: 16px; /* Font size */
+    transition: none; /* Remove any transitions */
 }
 
+/* Remove focus and hover effect for input fields */
 #loginForm input:focus, #loginForm input:hover {
-    border-color: #4a90e2;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    border-color: #4a90e2; /* Blue border on focus */
+    box-shadow: none; /* Remove shadow on focus */
     outline: none;
-    transform: translateY(-2px);
+    transform: none; /* Remove transform */
 }
 
+/* Styles for the submit button */
 #loginForm button {
-    width: calc(100% - 30px);
-    padding: 15px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    width: calc(100% - 30px); /* Full width minus padding */
+    padding: 15px; /* Add padding inside the button */
+    background-color: #4a90e2; /* Blue background */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Round the corners */
     cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    font-size: 18px; /* Font size */
+    font-weight: 600; /* Bold text */
+    transition: none; /* Remove any transitions */
 }
 
+/* Remove hover effect for the submit button */
 #loginForm button:hover {
-    background-color: #3a7bc8;
-    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
-    transform: translateY(-2px);
+    background-color: #4a90e2; /* Keep same background */
+    box-shadow: none; /* Remove shadow */
+    transform: none; /* Remove transform */
 }
 
+/* Remove active effect for the submit button */
 #loginForm button:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+    transform: none; /* Remove transform */
+    box-shadow: none; /* Remove shadow */
 }
 
+/* Styles for the paragraph */
 #loginContainer p {
     margin-top: 20px;
     text-align: center;
-    color: #666;
-    font-size: 14px;
-    transition: all 0.3s ease;
+    color: #666; /* Light gray color */
+    font-size: 14px; /* Smaller font size */
+    transition: none; /* Remove any transitions */
 }
 
+/* Remove hover effect for the paragraph */
 #loginContainer p:hover {
-    transform: translateY(-2px);
+    transform: none;
 }
 
+/* Styles for the links */
 #loginContainer a {
-    color: #4a90e2;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    color: #4a90e2; /* Blue color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600; /* Bold text */
+    transition: none; /* Remove any transitions */
     position: relative;
 }
 
+/* Remove hover effect for the links */
 #loginContainer a:hover {
-    color: #3a7bc8;
+    color: #3a7bc8; /* Darker blue color */
 }
 
+/* Remove underline effect for the links */
 #loginContainer a::after {
     content: '';
     position: absolute;
@@ -483,12 +506,12 @@ main {
     left: 0;
     background-color: #3a7bc8;
     visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
+    transform: none;
+    transition: none; /* Remove any transitions */
 }
 
+/* Underline effect on hover */
 #loginContainer a:hover::after {
     visibility: visible;
-    transform: scaleX(1);
+    transform: none;
 }
-

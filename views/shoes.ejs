@@ -55,15 +55,17 @@
             </div>
         </section>
     </main>
-    <div id="loginContainer" style="display: none;">
-        <h2 id="loginHeading">sign in</h2>
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="/register" id="signupLink">Sign Up</a></p>
-    </div>
+    <!-- Login container hidden by default -->
+<div id="loginContainer">
+    <h2 id="loginHeading">Sign In</h2>
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/register" id="signupLink">Sign Up</a></p>
+</div>
+
     <div id="shoeDetailsContainer" style="display: none;"></div>
     <footer id="mainFooter">
         <div class="footer-content">
@@ -118,12 +120,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
+    // Show login form when "Sign In" is clicked
     $('.sign-in').click(function(e) {
         e.preventDefault();
-        $('main').hide();
-        $('#loginContainer').show();
+        $('#loginContainer').show(); // Show the login container
     });
 
+    // Handle login form submission
     $('#loginForm').submit(function(e) {
         e.preventDefault();
         var email = $('#email').val();
@@ -132,7 +135,7 @@ $(document).ready(function() {
         $.ajax({
             url: "/user/login",
             method: "POST",
-            data: {email: email, password: password},
+            data: { email: email, password: password },
             success: function(response) {
                 console.log("Login successful:", response);
                 alert("Login successful!");
@@ -145,6 +148,7 @@ $(document).ready(function() {
         });
     });
 });
+
 </script>
 
 </body>
