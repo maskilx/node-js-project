@@ -1,0 +1,20 @@
+<!-- Shoe information section -->
+<div class="shoe-info">
+    <h1><%= shoe.title %></h1>
+    <p class="category"><%= shoe.category %></p>
+    <p class="price">$<%= shoe.price %></p>
+    <p class="description"><%= shoe.description %></p>
+    
+    <!-- Size selector -->
+    <div class="size-selector">
+        <label for="shoe-size">Select Size:</label>
+        <select id="shoe-size" name="shoe-size">
+            <option value="">Select a size</option>
+            <% [36, 37, 38, 39, 40, 41, 42, 43, 44, 45].forEach(size => { %>
+                <option value="<%= size %>"><%= size %></option>
+            <% }); %>
+        </select>
+    </div>
+    
+    <button class="add-to-cart">Add to Cart</button>
+</div>
