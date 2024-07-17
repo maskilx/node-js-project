@@ -50,18 +50,3 @@
 #checkout-button:hover {
     background-color: #357ab8; /* Darker blue on hover */
 }
-
-/* Add button style */
-#add-item-button {
-    margin: 20px auto; /* Center the button with auto margins */
-    padding: 10px 20px; /* Padding inside the button */
-    background-color: #28a745; /* Green background color */
-    color: white; /* White text color */
-    border: none; /* Remove default border */
-    border-radius: 8px; /* Rounded corners for the button */
-    cursor: pointer; /* Pointer cursor on hover */
-}
-
-#add-item-button:hover {
-    background-color: #218838; /* Darker green on hover */
-}
