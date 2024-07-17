@@ -1,0 +1,67 @@
+/* Styles for the shopping cart */
+#cart-container {
+    max-width: 800px; /* Maximum width for the cart container */
+    margin: 50px auto; /* Center the container with auto margins */
+    padding: 20px; /* Padding inside the container */
+    border: 1px solid #ddd; /* Light grey border around the container */
+    border-radius: 8px; /* Rounded corners for the container */
+    background-color: #f9f9f9; /* Light grey background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for emphasis */
+    text-align: center; /* Center text alignment */
+}
+
+#cart-container h2 {
+    text-align: center; /* Center the text of the heading */
+    margin-bottom: 20px; /* Margin below the heading */
+}
+
+#cart-items {
+    margin-bottom: 20px; /* Margin below the cart items */
+}
+
+.cart-item {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out items evenly */
+    padding: 10px; /* Padding inside each cart item */
+    border-bottom: 1px solid #ddd; /* Light grey border below each item */
+}
+
+.cart-item:last-child {
+    border-bottom: none; /* Remove the border for the last item */
+}
+
+.cart-item p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+
+#cart-summary {
+    text-align: right; /* Align text to the right */
+}
+
+#checkout-button {
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: #4a90e2; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+#checkout-button:hover {
+    background-color: #357ab8; /* Darker blue on hover */
+}
+
+/* Add button style */
+#add-item-button {
+    margin: 20px auto; /* Center the button with auto margins */
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: #28a745; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+#add-item-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}

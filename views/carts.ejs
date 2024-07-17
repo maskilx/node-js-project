@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/base.css"> <!-- Make sure base styles are loaded -->
+    <link rel="stylesheet" href="/carts.css"> <!-- Cart-specific styles -->
+    <link rel="stylesheet" href="/header.css"> <!-- Header styles -->
+    <link rel="stylesheet" href="/footer.css"> <!-- Footer styles -->
+</head>
+<body>
+    <div id="page-container">
+        <!-- Include header -->
+        <%- include('partials/header') %>
+
+        <main>
+            <div id="cart-content">
+                <!-- Content will be loaded via AJAX -->
+            </div>
+        </main>
+
+        <!-- Include footer -->
+        <%- include('partials/footer') %>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Cart-specific JavaScript -->
+    <script src="/carts.js"></script> <!-- Ensure this path is correct -->
+</body>
+</html>

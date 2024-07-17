@@ -1,0 +1,155 @@
+<script>
+    function viewShoeDetails(shoeId) {
+        $.ajax({
+            url: `/shoes/${shoeId}`,
+            method: 'GET',
+            success: function(response) {
+                $('main').html(response);
+                history.pushState({shoeId: shoeId}, '', `/shoes/${shoeId}`);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching shoe details:', error);
+            }
+        });
+    }
+
+    $(window).on('popstate', function(event) {
+        if (event.originalEvent.state && event.originalEvent.state.shoeId) {
+            viewShoeDetails(event.originalEvent.state.shoeId);
+        } else {
+            window.location.reload();
+        }
+    });
+
+    $(document).ready(function() {
+        $('.sign-in').click(function(e) {
+            e.preventDefault();
+            $('main').hide();
+            $('#loginContainer').show();
+            adjustFooterPosition();
+        });
+
+        $('#loginForm').submit(function(e) {
+            console.log("Form submitted");
+            e.preventDefault();
+            var email = $('#email').val().trim();
+            var password = $('#password').val().trim();
+
+            console.log("Email value:", email);
+            console.log("Password value:", password);
+
+            if (!email || !password) {
+                alert("Please enter both email and password");
+                return;
+            }
+
+            $.ajax({
+                url: "/users/login",
+                method: "POST",
+                data: JSON.stringify({ email: email, password: password }),
+                contentType: "application/json",
+                dataType: "json",
+                success: function(response) {
+                    console.log("Login response:", response);
+                    if (response.success) {
+                        localStorage.setItem('token', response.token);
+                        alert("Login successful!");
+                        $('#loginContainer').hide();
+                        $('main').show();
+                        updateUIAfterLogin();
+                    } else {
+                        alert(response.message || "Login failed. Please try again.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Login error:", xhr.responseText);
+                    alert("Login failed. Error: " + xhr.responseText);
+                }
+            });
+        });
+
+        $('#signupLink').click(function(e) {
+            e.preventDefault();
+            $('#loginContainer').hide();
+            $.ajax({
+                url: "/users/register",
+                method: "GET",
+                success: function(response) {
+                    $('#registrationFormContainer').html(response).show();
+                    adjustFooterPosition();
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching registration form:", error);
+                    alert("Failed to load registration form. Please try again.");
+                }
+            });
+        });
+
+        if (localStorage.getItem('token')) {
+            updateUIAfterLogin();
+        }
+
+        adjustFooterPosition();
+        $(window).resize(adjustFooterPosition);
+    });
+
+    function updateUIAfterLogin() {
+        $('.sign-in').text('My Account').attr('href', '/account');
+    }
+
+    $(document).on('click', '#logoutLink', function(e) {
+        e.preventDefault();
+        localStorage.removeItem('token');
+        updateUIAfterLogout();
+        alert("You have been logged out.");
+    });
+
+    function updateUIAfterLogout() {
+        $('.sign-in').text('Sign In').attr('href', '#');
+    }
+
+    $(document).on('submit', '#registerForm', function(e) {
+        e.preventDefault();
+        var formData = {
+            firstName: $('#firstName').val().trim(),
+            lastName: $('#lastName').val().trim(),
+            email: $('#email').val().trim(),
+            password: $('#password').val().trim(),
+            isAdmin: false // ניתן לשנות לפי הצורך
+        };
+
+        if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+            alert("Please provide all fields");
+            return;
+        }
+
+        $.ajax({
+            url: "/users/register",
+            method: "POST",
+            data: JSON.stringify(formData),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(response) {
+                console.log("Registration successful:", response);
+                alert("Registration successful! Please log in.");
+                $('#registrationFormContainer').hide();
+                $('#loginContainer').show();
+                adjustFooterPosition();
+            },
+            error: function(xhr, status, error) {
+                console.error("Registration error:", error);
+                alert("Registration failed. Please try again.");
+            }
+        });
+    });
+
+    function adjustFooterPosition() {
+        const pageHeight = $('#page-container').height();
+        const windowHeight = $(window).height();
+        if (pageHeight < windowHeight) {
+            $('footer').css('position', 'fixed').css('bottom', '0').css('width', '100%');
+        } else {
+            $('footer').css('position', 'static');
+        }
+    }
+</script>

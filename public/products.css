@@ -1,0 +1,109 @@
+/* Featured products section styles */
+.featured-products {
+    padding: 40px;
+}
+
+.featured-products h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product {
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.product img:hover {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+.view-details {
+    display: inline-block;
+    background-color: #111;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.view-details:hover {
+    background-color: #333;
+}
+
+/* Individual shoe details page styles */
+#shoeDetails {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.shoe-container {
+    display: flex;
+    gap: 40px;
+}
+
+.shoe-images {
+    flex: 1;
+}
+
+.shoe-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.shoe-info {
+    flex: 1;
+}
+
+.shoe-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.shoe-info .category {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.shoe-info .price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.shoe-info .description {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.size-selector {
+    margin-bottom: 20px;
+}
+
+.size-selector select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 200px;
+}

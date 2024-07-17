@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="shoes.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div id="page-container">
+        <!-- Include header -->
+        <%- include('partials/header') %>
+
+        <main>
+            <!-- Include hero section -->
+            <%- include('partials/hero') %>
+            
+            <!-- Include featured products section -->
+            <%- include('partials/featured-products', { shoes: shoes }) %>
+        </main>
+
+        <div id="registrationFormContainer" style="display: none;"></div>
+        <div id="loginContainer" style="display: none;">
+            <h2 id="loginHeading">Sign In</h2>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
+        </div>
+        <div id="shoeDetailsContainer" style="display: none;"></div>
+
+        <!-- Include footer -->
+        <%- include('partials/footer') %>
+    </div>
+
+    <!-- Include scripts -->
+    <%- include('partials/scripts') %>
+</body>
+</html>
