@@ -21,12 +21,16 @@
     text-align: center;
 }
 
+/* Ensures all product images are the same size */
 .product img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Ensures the image takes the full width of its container */
+    height: 250px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+    object-position: center; /* Centers the image within the container */
     transition: transform 0.3s;
 }
 
+/* Hover effect on product images */
 .product img:hover {
     transform: scale(1.05);
 }
